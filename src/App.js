@@ -5,10 +5,9 @@ import './App.css';
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState('worldwide');
 
-  // Use Effect runs a piece of code based on a given condition
   useEffect(() => {
-    // async -> send a request, wait for it, do something with info
     const getCountriesData = async () => {
       await fetch('https://disease.sh/v3/covid-19/countries')
         .then((response) => response.json())
@@ -23,14 +22,20 @@ function App() {
     };
 
     getCountriesData();
-  }, [countries]);
+  }, []);
+
+  const onCountryChange = (e) => {
+    const countryCode = e.target.value;
+    setCountry(countryCode);
+  };
 
   return (
     <div className="app">
       <div class="app__header">
         <h1>COVID 19 Tracker App</h1>
         <FormControl className="app_dropdown">
-          <Select variant="outlined" value="abc">
+          <Select variant="outlined" onChange={onCountryChange} value={country}>
+            <MenuItem value="worldwide">Worldwide</MenuItem>
             {countries.map((country) => (
               <MenuItem value={country.value}>{country.name}</MenuItem>
             ))}
