@@ -2,6 +2,7 @@ import { FormControl } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { MenuItem, Select } from '@material-ui/core';
 import InfoBox from './Components/InfoBox';
+import Map from './Components/Map';
 import './App.css';
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
       {/* {Table} */}
       {/* {Graph} */}
 
-      {/* {Map} */}
+      <Map />
     </div>
   );
 }
