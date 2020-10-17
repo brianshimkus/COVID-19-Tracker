@@ -7,6 +7,11 @@ body {
   color: #abb2bf;
 }
 
+.app {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .app__header {
   display: flex;
   align-items: center;
@@ -14,7 +19,22 @@ body {
   justify-content: space-between;
 }
 
+.app_dropdown {
+  background-color: #98c379;
+  border-radius: 4px;
+}
+
+.app__left {
+  flex: 0.9;
+}
+
 .app__stats {
   display: flex;
   justify-content: space-between;
+}
+
+@media (max-width: 990px) {
+  .app {
+    flex-direction: column;
+  }
 }
