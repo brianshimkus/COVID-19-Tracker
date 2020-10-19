@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
+import numeral from 'numeral';
 
 const options = {
   legend: {
@@ -10,9 +11,42 @@ const options = {
       radius: 0,
     },
   },
+  maintainAspectRatio: false,
+  tooltips: {
+    mode: 'index',
+    intersect: false,
+    callbacks: {
+      label: function (tooltipItem, data) {
+        return numeral(tooltipItem.value).format('+0.0');
+      },
+    },
+  },
+  scales: {
+    xAxes: [
+      {
+        type: 'time',
+        time: {
+          format: 'MM/DD/YYYY',
+          tooltipFormat: 'll',
+        },
+      },
+    ],
+    yAxes: [
+      {
+        gridLines: {
+          display: false,
+        },
+        ticks: {
+          callback: function (value, index, values) {
+            return numeral(value).format('0a');
+          },
+        },
+      },
+    ],
+  },
 };
 
-function LineGraph() {
+function LineGraph({ casesType = 'cases' }) {
   const [data, setData] = useState({});
 
   const buildChartData = (data, casesType = 'cases') => {
@@ -42,7 +76,7 @@ function LineGraph() {
         });
     };
     fetchData();
-  }, []);
+  }, [casesType]);
 
   return (
     <div>
@@ -50,7 +84,13 @@ function LineGraph() {
         <Line
           options={options}
           data={{
-            datasets: [{ data: data }],
+            datasets: [
+              {
+                backgroundColor: 'rgba(222, 107, 116, 0.5)',
+                borderColor: '#de6b74',
+                data: data,
+              },
+            ],
           }}
         />
       )}
