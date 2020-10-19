@@ -7,6 +7,7 @@ import Map from './Components/Map';
 import Table from './Components/Table';
 import './Styles/App.css';
 import { sortData } from './utility';
+import 'leaflet/dist/leaflet.css';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -102,7 +103,6 @@ function App() {
           <Table countries={tableData} />
           <h3>New cases worldwide</h3>
           <LineGraph />
-          {/* {Graph} */}
         </CardContent>
       </Card>
     </div>
