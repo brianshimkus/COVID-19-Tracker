@@ -4,7 +4,7 @@ import { MenuItem, Select, Card } from '@material-ui/core';
 import InfoBox from './Components/InfoBox';
 import Map from './Components/Map';
 import Table from './Components/Table';
-import './App.css';
+import './Styles/App.css';
 
 function App() {
   const [countries, setCountries] = useState([]);
