@@ -10,6 +10,7 @@ body {
 .app {
   display: flex;
   justify-content: space-evenly;
+  padding: 20px;
 }
 
 .app__header {
@@ -26,6 +27,25 @@ body {
 
 .app__left {
   flex: 0.9;
+}
+
+.app__right {
+  display: flex;
+  flex-direction: column;
+}
+
+.app__right .MuiCardContent-root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.app__graph {
+  flex-grow: 1;
+}
+
+.app__graphTitle {
+  margin: 20px 0 10px 0;
 }
 
 .app__stats {
